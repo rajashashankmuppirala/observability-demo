@@ -1,0 +1,186 @@
+2025-05-04 18:30:23,817 [main] [trace= span=] INFO  c.e.u.UserServiceApplication - Starting UserServiceApplication using Java 23.0.1 with PID 98720 (/Users/shashank/Projects/datagaps/code/poc/observability-demo/user-service/target/classes started by shashank in /Users/shashank/Projects/datagaps/code/poc/observability-demo)
+2025-05-04 18:30:23,818 [main] [trace= span=] DEBUG c.e.u.UserServiceApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+2025-05-04 18:30:23,818 [main] [trace= span=] INFO  c.e.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-04 18:30:24,201 [main] [trace= span=] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-05-04 18:30:24,205 [main] [trace= span=] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-05-04 18:30:24,206 [main] [trace= span=] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-04 18:30:24,206 [main] [trace= span=] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-04 18:30:24,219 [main] [trace= span=] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-04 18:30:24,219 [main] [trace= span=] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 387 ms
+2025-05-04 18:30:24,317 [main] [trace= span=] INFO  c.e.userservice.service.UserService - UserService initialized with 5 users
+2025-05-04 18:30:24,484 [main] [trace= span=] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-05-04 18:30:24,510 [main] [trace= span=] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-05-04 18:30:24,515 [main] [trace= span=] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-05-04 18:30:24,521 [main] [trace= span=] INFO  c.e.u.UserServiceApplication - Started UserServiceApplication in 0.869 seconds (process running for 1.158)
+2025-05-04 18:30:24,985 [RMI TCP Connection(1)-192.168.2.140] [trace= span=] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-04 18:30:24,986 [RMI TCP Connection(1)-192.168.2.140] [trace= span=] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-04 18:30:24,987 [RMI TCP Connection(1)-192.168.2.140] [trace= span=] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-05-04 18:30:55,774 [http-nio-8081-exec-1] [trace= span=] INFO  c.e.u.controller.UserController - GET request received for all users
+2025-05-04 18:30:55,775 [http-nio-8081-exec-1] [trace= span=] INFO  c.e.userservice.service.UserService - Retrieving all users
+2025-05-04 18:30:55,775 [http-nio-8081-exec-1] [trace= span=] INFO  c.e.u.controller.UserController - Returning 5 users
+2025-05-04 18:30:59,291 [BatchSpanProcessor_WorkerThread-1] [trace= span=] INFO  i.o.e.logging.LoggingSpanExporter - 'http get /api/users' : 0f3b5af017569a18b5e120d193891ab3 59d265d986e51de2 SERVER [tracer: user-service:] AttributesMap{data={http.url=/api/users, status=200, outcome=SUCCESS, uri=/api/users, exception=none, users.count=5, method=GET}, capacity=128, totalAddedValues=7}
+2025-05-04 18:31:02,911 [OkHttp http://localhost:4318/...] [trace= span=] ERROR i.o.e.internal.http.HttpExporter - Failed to export spans. The request could not be executed. Full error message: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4318
+java.net.ConnectException: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4318
+	at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:297)
+	at okhttp3.internal.connection.RealConnection.connect(RealConnection.kt:207)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:226)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at io.opentelemetry.exporter.sender.okhttp.internal.RetryInterceptor.intercept(RetryInterceptor.java:91)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:517)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+	Suppressed: java.net.ConnectException: Failed to connect to localhost/127.0.0.1:4318
+		... 21 common frames omitted
+	Caused by: java.net.ConnectException: Connection refused
+		at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+		at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+		at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+		at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+		at java.base/java.net.Socket.connect(Socket.java:760)
+		at okhttp3.internal.platform.Platform.connectSocket(Platform.kt:128)
+		at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:295)
+		... 20 common frames omitted
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:760)
+	at okhttp3.internal.platform.Platform.connectSocket(Platform.kt:128)
+	at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:295)
+	... 20 common frames omitted
+2025-05-04 18:31:35,205 [SpringApplicationShutdownHook] [trace= span=] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-04 18:31:35,206 [tomcat-shutdown] [trace= span=] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-04 18:39:15,536 [main] [trace= span=] INFO  c.e.u.UserServiceApplication - Starting UserServiceApplication using Java 23.0.1 with PID 98793 (/Users/shashank/Projects/datagaps/code/poc/observability-demo/user-service/target/classes started by shashank in /Users/shashank/Projects/datagaps/code/poc/observability-demo)
+2025-05-04 18:39:15,537 [main] [trace= span=] DEBUG c.e.u.UserServiceApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+2025-05-04 18:39:15,537 [main] [trace= span=] INFO  c.e.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-04 18:39:15,892 [main] [trace= span=] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-05-04 18:39:15,896 [main] [trace= span=] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-05-04 18:39:15,896 [main] [trace= span=] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-04 18:39:15,896 [main] [trace= span=] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-04 18:39:15,908 [main] [trace= span=] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-04 18:39:15,908 [main] [trace= span=] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 357 ms
+2025-05-04 18:39:16,006 [main] [trace= span=] INFO  c.e.userservice.service.UserService - UserService initialized with 5 users
+2025-05-04 18:39:16,173 [main] [trace= span=] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-05-04 18:39:16,198 [main] [trace= span=] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-05-04 18:39:16,203 [main] [trace= span=] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-05-04 18:39:16,208 [main] [trace= span=] INFO  c.e.u.UserServiceApplication - Started UserServiceApplication in 0.824 seconds (process running for 1.172)
+2025-05-04 18:39:16,655 [RMI TCP Connection(3)-192.168.2.140] [trace= span=] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-04 18:39:16,655 [RMI TCP Connection(3)-192.168.2.140] [trace= span=] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-04 18:39:16,655 [RMI TCP Connection(3)-192.168.2.140] [trace= span=] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-05-04 18:39:23,622 [http-nio-8081-exec-1] [trace= span=] INFO  c.e.u.controller.UserController - GET request received for all users
+2025-05-04 18:39:23,622 [http-nio-8081-exec-1] [trace= span=] INFO  c.e.userservice.service.UserService - Retrieving all users
+2025-05-04 18:39:23,623 [http-nio-8081-exec-1] [trace= span=] INFO  c.e.u.controller.UserController - Returning 5 users
+2025-05-04 18:39:25,960 [BatchSpanProcessor_WorkerThread-1] [trace= span=] INFO  i.o.e.logging.LoggingSpanExporter - 'http get /api/users' : 7ab0e9ffa0b9017aba84b2cc4096c3a5 c6ebc20bb60248ea SERVER [tracer: user-service:] AttributesMap{data={exception=none, method=GET, users.count=5, http.url=/api/users, uri=/api/users, outcome=SUCCESS, status=200}, capacity=128, totalAddedValues=7}
+2025-05-04 18:39:29,429 [OkHttp http://localhost:4318/...] [trace= span=] ERROR i.o.e.internal.http.HttpExporter - Failed to export spans. The request could not be executed. Full error message: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4318
+java.net.ConnectException: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4318
+	at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:297)
+	at okhttp3.internal.connection.RealConnection.connect(RealConnection.kt:207)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:226)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at io.opentelemetry.exporter.sender.okhttp.internal.RetryInterceptor.intercept(RetryInterceptor.java:91)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:517)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+	Suppressed: java.net.ConnectException: Failed to connect to localhost/127.0.0.1:4318
+		... 21 common frames omitted
+	Caused by: java.net.ConnectException: Connection refused
+		at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+		at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+		at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+		at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+		at java.base/java.net.Socket.connect(Socket.java:760)
+		at okhttp3.internal.platform.Platform.connectSocket(Platform.kt:128)
+		at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:295)
+		... 20 common frames omitted
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:760)
+	at okhttp3.internal.platform.Platform.connectSocket(Platform.kt:128)
+	at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:295)
+	... 20 common frames omitted
+2025-05-04 18:39:40,016 [http-nio-8081-exec-2] [trace= span=] INFO  c.e.u.controller.UserController - GET request received for user with ID: user1
+2025-05-04 18:39:40,017 [http-nio-8081-exec-2] [trace= span=] INFO  c.e.userservice.service.UserService - Finding user by ID: user1
+2025-05-04 18:39:40,018 [http-nio-8081-exec-2] [trace= span=] INFO  c.e.userservice.service.UserService - User found: johndoe
+2025-05-04 18:39:40,018 [http-nio-8081-exec-2] [trace= span=] INFO  c.e.u.controller.UserController - Returning user: johndoe
+2025-05-04 18:39:40,967 [BatchSpanProcessor_WorkerThread-1] [trace= span=] INFO  i.o.e.logging.LoggingSpanExporter - 'http get /api/users/{id}' : 1a0ec15fa8fdd72db27f0b43f188c82f 828ad31d12afac40 SERVER [tracer: user-service:] AttributesMap{data={exception=none, user.id=user1, method=GET, http.url=/api/users/user1, user.found=true, uri=/api/users/{id}, outcome=SUCCESS, status=200}, capacity=128, totalAddedValues=8}
+2025-05-04 18:39:48,694 [OkHttp http://localhost:4318/...] [trace= span=] ERROR i.o.e.internal.http.HttpExporter - Failed to export spans. The request could not be executed. Full error message: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4318
+java.net.ConnectException: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4318
+	at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:297)
+	at okhttp3.internal.connection.RealConnection.connect(RealConnection.kt:207)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:226)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at io.opentelemetry.exporter.sender.okhttp.internal.RetryInterceptor.intercept(RetryInterceptor.java:91)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:517)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+	Suppressed: java.net.ConnectException: Failed to connect to localhost/127.0.0.1:4318
+		... 21 common frames omitted
+	Caused by: java.net.ConnectException: Connection refused
+		at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+		at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+		at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+		at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+		at java.base/java.net.Socket.connect(Socket.java:760)
+		at okhttp3.internal.platform.Platform.connectSocket(Platform.kt:128)
+		at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:295)
+		... 20 common frames omitted
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:760)
+	at okhttp3.internal.platform.Platform.connectSocket(Platform.kt:128)
+	at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.kt:295)
+	... 20 common frames omitted
+2025-05-04 18:47:18,242 [SpringApplicationShutdownHook] [trace= span=] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-04 18:47:18,250 [tomcat-shutdown] [trace= span=] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete

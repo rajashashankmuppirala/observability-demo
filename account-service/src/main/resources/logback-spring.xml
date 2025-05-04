@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOGS" value="./logs" />
+    
+    <!-- Console appender for development -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{ISO8601} [%thread] [trace=%X{trace_id} span=%X{span_id}] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File appender for general logging -->
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/account-service.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{ISO8601} [%thread] [trace=%X{trace_id} span=%X{span_id}] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/account-service-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+    
+    <!-- Separate file for JSON logging (useful for log analysis tools) -->
+    <appender name="JsonFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/account-service-json.log</file>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- This encoder will create JSON-formatted logs -->
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/account-service-json-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Set logging level for Spring and other third-party libraries -->
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.hibernate" level="WARN" />
+    
+    <!-- Set logging level for our application code -->
+    <logger name="com.example.accountservice" level="DEBUG" />
+    
+    <!-- Root logger configuration -->
+    <root level="INFO">
+        <appender-ref ref="Console" />
+        <appender-ref ref="RollingFile" />
+        <!-- Uncomment when JSON encoder dependency is added -->
+        <!-- <appender-ref ref="JsonFile" /> -->
+    </root>
+</configuration>
